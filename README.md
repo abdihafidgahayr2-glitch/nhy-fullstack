@@ -119,4 +119,4 @@ If `npm start` or `npm run build` throws an ESLint config error about `jest/glob
 
 ## 👤 Author
 
-**Abdihafid Gahayr** — [LinkedIn](https://www.linkedin.com/in/abdihafid-gahayr-166134405/)
+**Abdihafid Gahayr** — [LinkedIn](https://www.linkedin.com/in/abdihafid-gahayr/)
