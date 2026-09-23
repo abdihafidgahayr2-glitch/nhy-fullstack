@@ -1,0 +1,1007 @@
+$colorNavy: #0c2340;
+$colorNavyMid: #123457;
+$colorNavyLight: #194271;
+$colorGreen: #4f8a2b;
+$colorGreenDark: #3f7524;
+$colorGreenLight: #6ba83f;
+$colorGreenTint: #e9f3e0;
+$colorSand: #f5f7f6;
+$colorWhite: #fff;
+$colorInk: #182233;
+$colorMuted: #5c6b7a;
+$colorBorder: #e3e8ea;
+$colorDanger: #c0392b;
+
+$radiusSmall: 8px;
+$radiusMedium: 12px;
+$radiusLarge: 16px;
+$radiusPill: 999px;
+
+$shadowSoft: 0 12px 24px -14px rgba(12, 35, 64, 0.3);
+$shadowMedium: 0 18px 40px -22px rgba(12, 35, 64, 0.35);
+
+@mixin cardSurface($radius: $radiusLarge, $shadow: $shadowMedium) {
+    background: $colorWhite;
+    border: 1px solid $colorBorder;
+    border-radius: $radius;
+    box-shadow: $shadow;
+}
+
+@mixin solidButton($bg, $bgHover) {
+    background: $bg;
+    color: $colorWhite;
+    border: none;
+    border-radius: $radiusPill;
+    cursor: pointer;
+
+    &:hover {
+        background: $bgHover;
+    }
+}
+
+@mixin flexBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin bulletList {
+    li {
+        position: relative;
+        padding-left: 16px;
+        font-size: 0.9rem;
+        color: $colorMuted;
+        margin-bottom: 7px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: $colorGreen;
+        }
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: $colorInk;
+    background: $colorWhite;
+    line-height: 1.55;
+}
+
+h1, h2, h3 {
+    font-family: 'Sora', 'Segoe UI', sans-serif;
+    color: $colorNavy;
+    margin-bottom: 0.5em;
+    line-height: 1.15;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.nh_container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.nh_eyebrow {
+    font-family: 'Sora', 'Segoe UI', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: $colorGreen;
+    margin-bottom: 0.5em;
+
+    &.nh_eyebrowLight {
+        color: $colorGreenLight;
+    }
+}
+
+.nh_sectionTitle {
+    text-align: center;
+    font-size: clamp(1.8rem, 3vw, 2.3rem);
+    position: relative;
+    margin-bottom: 52px;
+
+    span {
+        position: relative;
+        padding: 0 22px;
+        background: $colorWhite;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, $colorGreen 20%, $colorGreen 80%, transparent);
+    }
+}
+
+.nh_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: $radiusPill;
+    font-family: 'Sora', 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.nh_btnPrimary {
+    @include solidButton($colorGreen, $colorGreenDark);
+    box-shadow: 0 12px 22px -10px rgba(79, 138, 43, 0.55);
+}
+
+.nh_btnOutlineLight {
+    border-color: rgba(255, 255, 255, 0.65);
+    color: $colorWhite;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+}
+
+.nh_btnBlock {
+    width: 100%;
+}
+
+.nh_header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid $colorBorder;
+}
+
+.nh_headerInner {
+    @include flexBetween;
+    gap: 20px;
+    min-height: 80px;
+}
+
+.nh_brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nh_brandMark {
+    width: 38px;
+    flex: 0 0 38px;
+
+    svg {
+        width: 100%;
+        display: block;
+    }
+}
+
+.nh_brandText {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.nh_brandName {
+    font-family: 'Sora', 'Segoe UI', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: $colorNavy;
+
+    &.nh_light {
+        color: $colorWhite;
+    }
+}
+
+.nh_brandTagline {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $colorGreen;
+    max-width: 190px;
+
+    &.nh_light {
+        color: $colorGreenLight;
+    }
+}
+
+.nh_mainNav {
+    ul {
+        display: flex;
+        gap: 34px;
+    }
+
+    a {
+        font-family: 'Sora', 'Segoe UI', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: $colorNavyMid;
+        position: relative;
+        padding: 6px 0;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: $colorGreen;
+            transition: width 0.2s ease;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+    }
+}
+
+.nh_headerActions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nh_headerPhone {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Sora', 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: $colorNavy;
+}
+
+.nh_navToggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: $colorNavy;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    &.nh_open {
+        span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        span:nth-child(2) {
+            opacity: 0;
+        }
+
+        span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    }
+}
+
+.nh_hero {
+    padding-top: 56px;
+}
+
+.nh_heroTop {
+    h1 {
+        font-size: clamp(2rem, 4.2vw, 3.2rem);
+        max-width: 16ch;
+        letter-spacing: -0.01em;
+
+        span {
+            color: $colorGreen;
+        }
+    }
+}
+
+.nh_pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid $colorBorder;
+
+    li {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    strong {
+        font-family: 'Sora', 'Segoe UI', sans-serif;
+        font-size: 1rem;
+        color: $colorNavy;
+    }
+
+    span {
+        font-size: 0.85rem;
+        color: $colorMuted;
+        max-width: 20ch;
+    }
+}
+
+.nh_pillarIcon {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--nh-ring, #{$colorNavy});
+    background: $colorWhite;
+    margin-bottom: 6px;
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.nh_heroBanner {
+    position: relative;
+    margin-top: 52px;
+    min-height: 340px;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.nh_heroBannerMedia {
+    position: absolute;
+    inset: 0;
+    display: flex;
+}
+
+.nh_mediaTurbines, .nh_mediaConstruction {
+    flex: 1 1 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.nh_mediaTurbines {
+    background-image: linear-gradient(180deg, rgba(12, 35, 64, 0) 40%, rgba(12, 35, 64, 0.25) 100%), url('https://images.unsplash.com/photo-1782784228392-76c7954f9465?auto=format&fit=crop&w=1400&q=70');
+}
+
+.nh_mediaConstruction {
+    background-image: linear-gradient(180deg, rgba(12, 35, 64, 0) 40%, rgba(12, 35, 64, 0.35) 100%), url('https://images.unsplash.com/photo-1609867271967-a82f85c48531?auto=format&fit=crop&w=1400&q=70');
+}
+
+.nh_heroBannerPanel {
+    position: relative;
+    z-index: 2;
+    background: $colorNavy;
+    color: $colorWhite;
+    padding: 44px 12vw 44px 6vw;
+    max-width: 640px;
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
+
+    h2 {
+        color: $colorWhite;
+        font-size: clamp(1.5rem, 2.6vw, 2rem);
+        max-width: 14ch;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.82);
+        max-width: 46ch;
+        margin-bottom: 1em;
+    }
+}
+
+.nh_services {
+    padding: 96px 0 40px;
+}
+
+.nh_serviceGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+}
+
+.nh_serviceCard {
+    @include cardSurface($radiusLarge, $shadowMedium);
+    background: $colorSand;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        font-size: 1.02rem;
+        padding: 14px 20px 6px;
+        margin: 0;
+    }
+
+    ul {
+        padding: 0 20px 22px;
+        flex: 1;
+        @include bulletList;
+    }
+}
+
+.nh_servicePhoto {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 44px;
+        height: 44px;
+    }
+
+    &.nh_photoSafety {
+        background: linear-gradient(135deg, #0c2340, #194271);
+    }
+
+    &.nh_photoEnvironment {
+        background: linear-gradient(135deg, #3f7524, #6ba83f);
+    }
+
+    &.nh_photoFacility {
+        background: linear-gradient(135deg, #123457, #2c5c93);
+    }
+
+    &.nh_photoProperty {
+        background: linear-gradient(135deg, #4f8a2b, #87b95a);
+    }
+}
+
+.nh_serviceIcon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: $colorWhite;
+    border: 2px solid $colorBorder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -26px 20px 0;
+    box-shadow: $shadowSoft;
+
+    svg {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+.nh_splitSection {
+    padding: 90px 0;
+    background: $colorSand;
+}
+
+.nh_splitGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+
+.nh_featureCard {
+    @include cardSurface;
+    background: $colorWhite;
+    overflow: hidden;
+    display: flex;
+}
+
+.nh_featurePhoto {
+    flex: 0 0 34%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #4f8a2b, #123457);
+
+    &.nh_photoTextiles {
+        background: linear-gradient(160deg, #123457, #4f8a2b);
+    }
+
+    svg {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.nh_featureBody {
+    padding: 28px 26px;
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    ul {
+        margin-top: 6px;
+        @include bulletList;
+    }
+}
+
+.nh_featureIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: $colorGreenTint;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.nh_featureLead {
+    font-weight: 600;
+    color: $colorNavyMid;
+}
+
+.nh_planetStrip {
+    padding: 54px 0;
+}
+
+.nh_planetInner {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    border: 1.5px solid $colorGreenTint;
+    background: $colorGreenTint;
+    border-radius: $radiusLarge;
+    padding: 30px 34px;
+
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.2em;
+    }
+
+    p {
+        margin: 0;
+        color: $colorMuted;
+    }
+}
+
+.nh_planetIcon {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: $colorWhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $shadowMedium;
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.nh_comingSoon {
+    background: $colorNavy;
+    padding: 64px 0;
+}
+
+.nh_comingSoonTitle {
+    color: $colorWhite;
+    text-align: center;
+    position: relative;
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+}
+
+.nh_comingSoonGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+}
+
+.nh_csItem {
+    text-align: center;
+    color: $colorWhite;
+    padding: 22px 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+
+    &:first-child {
+        border-left: none;
+    }
+
+    svg {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        color: $colorWhite;
+        font-size: 1rem;
+        margin-bottom: 0.35em;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.86rem;
+        margin: 0;
+    }
+}
+
+.nh_whyUs {
+    padding: 70px 0;
+}
+
+.nh_whyInner {
+    h2 {
+        text-align: center;
+        font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+        max-width: 22ch;
+        margin: 0 auto 40px;
+    }
+}
+
+.nh_whyGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.nh_whyItem {
+    text-align: center;
+    padding: 28px 18px;
+    border: 1px solid $colorBorder;
+    border-radius: $radiusLarge;
+
+    svg {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 12px;
+    }
+
+    h3 {
+        font-size: 1rem;
+        margin: 0;
+    }
+}
+
+.nh_contact {
+    background: $colorNavy;
+    color: $colorWhite;
+    padding: 90px 0;
+}
+
+.nh_contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.nh_contactInfo {
+    h2 {
+        color: $colorWhite;
+        font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+        max-width: 14ch;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.75);
+        max-width: 40ch;
+    }
+}
+
+.nh_contactList {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 600;
+    }
+}
+
+.nh_contactForm {
+    background: $colorWhite;
+    border-radius: $radiusLarge;
+    padding: 30px;
+    color: $colorInk;
+}
+
+.nh_formRow {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-family: 'Sora', 'Segoe UI', sans-serif;
+        font-weight: 600;
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+        color: $colorNavy;
+    }
+
+    input, select, textarea {
+        border: 1.5px solid $colorBorder;
+        border-radius: $radiusSmall;
+        padding: 11px 13px;
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        font-size: 0.95rem;
+        color: $colorInk;
+        background: #fbfcfc;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $colorGreen;
+            box-shadow: 0 0 0 3px rgba(79, 138, 43, 0.18);
+        }
+    }
+
+    &.nh_hasError {
+        input, textarea {
+            border-color: $colorDanger;
+        }
+    }
+}
+
+.nh_formError {
+    font-size: 0.78rem;
+    color: $colorDanger;
+    min-height: 1em;
+    margin-top: 4px;
+}
+
+.nh_formStatus {
+    margin: 14px 0 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 1.2em;
+
+    &.nh_success {
+        color: $colorGreen;
+    }
+
+    &.nh_fail {
+        color: $colorDanger;
+    }
+}
+
+.nh_footer {
+    background: $colorNavyMid;
+    color: $colorWhite;
+    padding: 50px 0 26px;
+}
+
+.nh_footerInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+}
+
+.nh_footerTag {
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 44ch;
+    margin: 0;
+}
+
+.nh_footerNav {
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 6px 0;
+
+    a {
+        font-family: 'Sora', 'Segoe UI', sans-serif;
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.85);
+
+        &:hover {
+            color: $colorGreenLight;
+        }
+    }
+}
+
+.nh_footerCopy {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    margin: 12px 0 0;
+}
+
+.nh_backToTop {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: $colorGreen;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px -8px rgba(12, 35, 64, 0.5);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 90;
+
+    &.nh_visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+
+[data-animate] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    &.nh_inView {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 960px) {
+    .nh_pillars {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 28px;
+    }
+
+    .nh_serviceGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nh_splitGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .nh_comingSoonGrid {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 28px;
+    }
+
+    .nh_csItem:nth-child(3) {
+        border-left: none;
+    }
+
+    .nh_whyGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .nh_contactGrid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+    }
+
+    .nh_heroBannerPanel {
+        clip-path: none;
+        max-width: 100%;
+        padding-right: 6vw;
+    }
+
+    .nh_mediaTurbines, .nh_mediaConstruction {
+        display: none;
+    }
+
+    .nh_heroBanner {
+        background: linear-gradient(135deg, #123457, #0c2340);
+    }
+}
+
+@media (max-width: 760px) {
+    .nh_mainNav {
+        position: fixed;
+        inset: 80px 0 0 0;
+        background: $colorWhite;
+        padding: 30px 24px;
+        transform: translateX(100%);
+        transition: transform 0.25s ease;
+
+        &.nh_open {
+            transform: translateX(0);
+        }
+
+        ul {
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        a {
+            font-size: 1.1rem;
+        }
+    }
+
+    .nh_headerPhone {
+        display: none;
+    }
+
+    .nh_navToggle {
+        display: flex;
+    }
+
+    .nh_pillars {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .nh_serviceGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .nh_comingSoonGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .nh_csItem {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+        &:first-child {
+            border-top: none;
+        }
+    }
+
+    .nh_featureCard {
+        flex-direction: column;
+    }
+
+    .nh_featurePhoto {
+        flex: 0 0 110px;
+        width: 100%;
+    }
+}
